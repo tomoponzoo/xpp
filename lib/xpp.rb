@@ -1,5 +1,7 @@
 require "xpp/version"
 
 module Xpp
-  # Your code goes here...
+  require 'thor'
+
+  autoload :Command, 'xpp/command'
 end
