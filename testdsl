@@ -1,0 +1,36 @@
+=begin
+# 1. Top level action
+# 2. Task action
+# 3. Generator action
+
+=end
+
+# desc 'Clean architecture task'
+group 'Classes'
+templates './templates'
+
+task 'clean_architecture' do
+  gen 'ViewController'
+end
+
+gen 'ViewController' do
+  group_path 'Presentation'
+end
+gen 'Presenter' do
+  group_path 'Presentation'
+end
+gen 'UseCase' do
+  group_path 'Domain'
+end
+gen 'Repository' do
+  group_path 'Domain'
+end
+gen 'DataStore' do
+  group_path 'Data'
+end
+gen 'Wireframe' do
+  group_path 'Application'
+end
+gen 'Builder' do
+  group_path 'Application'
+end
