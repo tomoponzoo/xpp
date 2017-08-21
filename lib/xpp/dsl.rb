@@ -1,34 +1,51 @@
 module Xpp
   class DSL
-    def self.load(path)
-      new.tap do |dsl|
+    require 'xpp/dsl/generator'
+    require 'xpp/dsl/task'
+    require 'xpp/template/template_renderer'
+    require 'xpp/template/template_store'
+
+    def self.load(path, options)
+      new(options).tap do |dsl|
         dsl.load(path)
       end
     end
 
-    def initialize
-      @options = {}
-      @options[:templates_directory] = './templates'
+    def initialize(options)
+      @options = options
+      @options[:template_store] = Xpp::TemplateStore.store('./templates')
       @tasks = {}
     end
 
     def load(path)
+      path = File.expand_path(path)
       instance_eval(File.read(path), path) if File.exist?(path)
     end
 
-    def base_group_path(path)
-      @options[:base_group_path] = path
+    # define DSL
+    def group(path)
+      @options[:group] = path
     end
 
-    def templates_directory(path)
-      @options[:templates_directory] = path
+    def templates(path)
+      @options[:template_store] = Xpp::TemplateStore.store(path)
     end
 
     def task(name, &block)
-      @tasks[name] = block
+      @tasks[name] = Xpp::Task.define_task(name, block)
     end
 
+    # run
     def run(name)
+      task = @tasks[name]
+      if task.nil? then
+        # Task is undefined.
+        puts "Task is undefined. (#{name})"
+        return
+      end
+
+      puts "Task: #{name}"
+      task.run(@options)
     end
   end
 end

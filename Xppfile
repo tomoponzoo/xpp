@@ -1,0 +1,33 @@
+group 'Classes'
+templates './templates'
+
+# desc 'Clean architecture task'
+task 'clean_architecture' do
+  targets ['Stanby', 'Daemonby']
+  generate 'ViewController' do
+    group 'Presentation'
+  end
+  generate 'Presenter' do
+    group 'Presentation'
+  end
+  generate 'UseCase' do
+    group 'Domain'
+  end
+  generate 'Wireframe' do
+    group 'Application'
+  end
+  generate 'Builder' do
+    group 'Application'
+  end
+end
+
+# desc 'Clean architecture data task'
+task 'clean_architecture_data' do
+  targets ['Stanby', 'Daemonby']
+  generate 'Repository' do
+    group 'Domain'
+  end
+  generate 'DataStore' do
+    group 'Data'
+  end
+end

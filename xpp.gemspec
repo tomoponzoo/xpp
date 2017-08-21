@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "xcodeproj", "~> 1.5.1"
   spec.add_runtime_dependency "thor", "~> 0.20.0"
+  spec.add_runtime_dependency "highline", "~> 1.7.0"
 
   spec.add_development_dependency "bundler", "~> 1.15"
   spec.add_development_dependency "rake", "~> 10.0"
