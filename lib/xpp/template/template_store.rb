@@ -2,7 +2,7 @@ require 'pathname'
 
 module Xpp
   class TemplateStore
-    def self.store(path)
+    def self.store(path = './templates')
       new(path)
     end
 

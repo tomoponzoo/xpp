@@ -1,3 +1,4 @@
+project '../Sandbox/Sandbox.xcodeproj'
 group 'Classes'
 templates './templates'
 
@@ -5,19 +6,24 @@ templates './templates'
 task 'clean_architecture' do
   targets ['Stanby', 'Daemonby']
   generate 'ViewController' do
-    group 'Presentation'
+    group 'Presentation/ViewController'
+    template 'ViewController.swift.erb'
   end
   generate 'Presenter' do
-    group 'Presentation'
+    group 'Presentation/Presenter'
+    template 'Presenter.swift.erb'
   end
   generate 'UseCase' do
-    group 'Domain'
+    group 'Domain/UseCase'
+    template 'UseCase.swift.erb'
   end
   generate 'Wireframe' do
-    group 'Application'
+    group 'Application/Wireframe'
+    template 'Wireframe.swift.erb'
   end
   generate 'Builder' do
-    group 'Application'
+    group 'Application/Builder'
+    template 'Builder.swift.erb'
   end
 end
 
@@ -25,9 +31,11 @@ end
 task 'clean_architecture_data' do
   targets ['Stanby', 'Daemonby']
   generate 'Repository' do
-    group 'Domain'
+    group 'Domain/Repository'
+    template 'Repository.swift.erb'
   end
   generate 'DataStore' do
-    group 'Data'
+    group 'Data/DataStore'
+    template 'DataStore.swift.erb'
   end
 end

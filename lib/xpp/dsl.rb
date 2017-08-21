@@ -12,8 +12,7 @@ module Xpp
     end
 
     def initialize(options)
-      @options = options
-      @options[:template_store] = Xpp::TemplateStore.store('./templates')
+      @config = Xpp::Configuration.new(options)
       @tasks = {}
     end
 
@@ -23,12 +22,16 @@ module Xpp
     end
 
     # define DSL
+    def project(path)
+      @config.project = Xpp::ProjectLoader.load(path)
+    end
+
     def group(path)
-      @options[:group] = path
+      @config.group = path
     end
 
     def templates(path)
-      @options[:template_store] = Xpp::TemplateStore.store(path)
+      @config.template_store = Xpp::TemplateStore.store(path)
     end
 
     def task(name, &block)
@@ -45,7 +48,7 @@ module Xpp
       end
 
       puts "Task: #{name}"
-      task.run(@options)
+      task.run(@config)
     end
   end
 end

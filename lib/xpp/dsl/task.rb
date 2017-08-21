@@ -25,9 +25,9 @@ module Xpp
     end
 
     # run
-    def run(options)
+    def run(config)
       @generators.each do |name, generator|
-        generator.run(name, @targets, options)
+        generator.run(@targets, config)
       end
     end
   end
