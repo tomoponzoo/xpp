@@ -1,14 +1,18 @@
-module Xpp
+module Xcodeproj
   class Project
     module Object
       class PBXGroup
         def xpp_ref_group(path, is_confirm = false)
           path.split('/').reduce(self) do |group, name|
+            if group.nil?
+              break
+            end
+
             found_group = group.groups.find { |g| g.path == name or g.name == name }
             unless found_group.nil?
               next found_group
             end    
-            group.xpp_new_group(name, name, is_confirm)
+            group.xpp_new_group(name, is_confirm)
           end    
         end
 
@@ -38,8 +42,16 @@ module Xpp
           end
         end
 
-        def xpp_new_file(path)
-          
+        def xpp_new_file(path, targets)
+          targets = targets || []
+
+          file = files.find { |f| f.path == path }
+          if file.nil?
+            file = new_file(path)
+          end
+
+          targets.each { |target| target.add_file_references([file]) }
+          file
         end
       end
     end

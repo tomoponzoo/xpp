@@ -2,7 +2,7 @@ module Xpp
   class ProjectLoader
     def self.load(path = nil)
       path = path || find
-      if path.nil?
+      if path.nil?
         return nil
       end
 

@@ -2,6 +2,9 @@ module Xpp
   class DSL
     require 'xpp/dsl/generator'
     require 'xpp/dsl/task'
+    require 'xpp/extension/project'
+    require 'xpp/extension/group'
+    require 'xpp/extension/file_reference'
     require 'xpp/template/template_renderer'
     require 'xpp/template/template_store'
 
@@ -49,6 +52,8 @@ module Xpp
 
       puts "Task: #{name}"
       task.run(@config)
+
+      @config.project.save
     end
   end
 end

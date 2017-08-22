@@ -5,6 +5,9 @@ module Xcodeproj
     end
 
     def xpp_ref_targets(targets)
+      native_targets.select do |native_target|
+        targets.include?(native_target.name)
+      end
     end
   end
 end

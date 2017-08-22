@@ -1,41 +1,41 @@
-project '../Sandbox/Sandbox.xcodeproj'
-group 'Classes'
-templates './templates'
+project '../XppSandbox/XppSandbox.xcodeproj'
+group 'XppSandbox/Classes'
+templates '../XppSandbox/Templates'
 
 # desc 'Clean architecture task'
 task 'clean_architecture' do
-  targets ['Stanby', 'Daemonby']
+  targets ['XppSandbox']
   generate 'ViewController' do
     group 'Presentation/ViewController'
     template 'ViewController.swift.erb'
   end
-  generate 'Presenter' do
-    group 'Presentation/Presenter'
-    template 'Presenter.swift.erb'
-  end
-  generate 'UseCase' do
-    group 'Domain/UseCase'
-    template 'UseCase.swift.erb'
-  end
-  generate 'Wireframe' do
-    group 'Application/Wireframe'
-    template 'Wireframe.swift.erb'
-  end
-  generate 'Builder' do
-    group 'Application/Builder'
-    template 'Builder.swift.erb'
-  end
+  # generate 'Presenter' do
+  #   group 'Presentation/Presenter'
+  #   template 'Presenter.swift.erb'
+  # end
+  # generate 'UseCase' do
+  #   group 'Domain/UseCase'
+  #   template 'UseCase.swift.erb'
+  # end
+  # generate 'Wireframe' do
+  #   group 'Application/Wireframe'
+  #   template 'Wireframe.swift.erb'
+  # end
+  # generate 'Builder' do
+  #   group 'Application/Builder'
+  #   template 'Builder.swift.erb'
+  # end
 end
 
 # desc 'Clean architecture data task'
-task 'clean_architecture_data' do
-  targets ['Stanby', 'Daemonby']
-  generate 'Repository' do
-    group 'Domain/Repository'
-    template 'Repository.swift.erb'
-  end
-  generate 'DataStore' do
-    group 'Data/DataStore'
-    template 'DataStore.swift.erb'
-  end
-end
+# task 'clean_architecture_data' do
+#   targets ['Stanby', 'Daemonby']
+#   generate 'Repository' do
+#     group 'Domain/Repository'
+#     template 'Repository.swift.erb'
+#   end
+#   generate 'DataStore' do
+#     group 'Data/DataStore'
+#     template 'DataStore.swift.erb'
+#   end
+# end
