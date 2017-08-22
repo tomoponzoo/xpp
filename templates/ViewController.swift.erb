@@ -1,0 +1,41 @@
+//
+//  <%= @name %>ViewController.swift
+//  <%= @project %>
+//
+//  Created by <%= @author %> on <%= @date %>.
+//  Copyright © 2017年 <%= @organization %>. All rights reserved.
+//
+
+import UIKit
+
+protocol <%= @name %>ViewInput: class {
+    
+}
+
+class <%= @name %>ViewController: UIViewController {
+    
+    fileprivate var presenter: <%= @name %>Presenter?
+    
+    func inject(presenter: <%= @name %>Presenter) {
+        self.presenter = presenter
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+// MARK: - Private
+extension <%= @name %>ViewController {
+    
+}
+
+// MARK: - ViewInput
+extension <%= @name %>ViewController: <%= @name %>ViewInput {
+    
+}
+
+// MARK: - Event
+extension <%= @name %>ViewController {
+    
+}

@@ -1,15 +1,15 @@
 module Xpp
   class Configuration
-    attr_accessor :project, :group, :template_store
+    attr_accessor :project, :group, :template_loader
     attr_reader :path, :name, :is_confirm
     
     def initialize(options)
       @path = options[:path] || ''
       @name = options[:name]
-      @is_confirm = options[:is_confirm]
+      @is_confirm = options[:confirm]
       @project = Xpp::ProjectLoader.load
       @group = ''
-      @template_store = Xpp::TemplateStore.store
+      @template_loader = Xpp::TemplateLoader.new
     end
 
     def build_group_path(path)

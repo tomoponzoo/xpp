@@ -1,0 +1,26 @@
+//
+//  <%= @name %>Builder.swift
+//  <%= @project %>
+//
+//  Created by <%= @author %> on <%= @date %>.
+//  Copyright © 2017年 <%= @organization %>. All rights reserved.
+//
+
+import UIKit
+
+struct <%= @name %>Builder {
+    
+    func build() -> UIViewController {
+        guard let viewController = R.storyboard.<#storyboard name#>.<#view controller#>() else { fatalError() }
+        
+        let wireframe = <%= @name %>WireframeImpl()
+        wireframe.viewController = viewController
+        
+        let useCase = <%= @name %>UseCaseImpl()
+        
+        let presenter = <%= @name %>PresenterImpl(useCase: useCase, viewInput: viewController, wireframe: wireframe)
+        viewController.inject(presenter: presenter)
+        
+        return viewController
+    }
+}

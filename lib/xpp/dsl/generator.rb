@@ -25,22 +25,26 @@ module Xpp
       group_path = config.build_group_path(@group)
       file_name = config.build_file_name(@template)
 
-      # グループ生成
+      # Create group
       group = project.xpp_ref_group(group_path.to_s, config.is_confirm)
       if group.nil?
-        Xpp::UI.warning("グループが存在しないため、#{name}の生成をスキップしました。")
+        Xpp::UI.warning("Group is not found. '#{@name}' group creation was skipped.")
         return
       end
 
-      # ファイル生成
+      # Create file reference
       file = group.xpp_new_file(file_name, targets)
 
-      # テンプレートからレンダリング済みのデータを生成
-      template = config.template_store.load(@template)
+      # Rendering
+      template = config.template_loader.load(@template)
+      if template.nil?
+        Xpp::UI.error("Template file is not found.")
+        return
+      end
       renderer = Xpp::TemplateRenderer.new(project, config.name)
       data = renderer.render(template)
 
-      # ファイルを保存
+      # Save file data
       file.xpp_write_data(data)
     end
   end

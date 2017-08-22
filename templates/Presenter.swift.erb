@@ -1,0 +1,36 @@
+//
+//  <%= @name %>Presenter.swift
+//  <%= @project %>
+//
+//  Created by <%= @author %> on <%= @date %>.
+//  Copyright © 2017年 <%= @organization %>. All rights reserved.
+//
+
+import Foundation
+
+protocol <%= @name %>Presenter {
+    
+}
+
+class <%= @name %>PresenterImpl: <%= @name %>Presenter {
+    fileprivate weak var viewInput: <%= @name %>ViewInput?
+    
+    fileprivate let useCase: <%= @name %>UseCase
+    fileprivate let wireframe: <%= @name %>Wireframe
+    
+    init(useCase: <%= @name %>UseCase, viewInput: <%= @name %>ViewInput, wireframe: <%= @name %>Wireframe) {
+        self.useCase = useCase
+        self.viewInput = viewInput
+        self.wireframe = wireframe
+    }
+}
+
+// MARK: - Public
+extension <%= @name %>PresenterImpl {
+
+}
+
+// MARK: - Private
+extension <%= @name %>PresenterImpl {
+    
+}

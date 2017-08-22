@@ -5,7 +5,7 @@ module Xcodeproj
         def xpp_write_data(data)
           writable = true
           if FileTest.exists?(real_path)
-            writable = Xpp::UI.confirm("既に同名のファイルが存在します。上書きしますか？")
+            writable = Xpp::UI.confirm("File already exists. Overwrite?")
           end
 
           if writable

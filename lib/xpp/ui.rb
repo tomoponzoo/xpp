@@ -1,8 +1,12 @@
 module Xpp
   class UI
     class << self
-      def confirm(message)
-        HighLine.agree("#{message} [Y/n]")
+      def confirm(message, is_confirm = true)
+        if is_confirm
+          HighLine.agree("#{message} [Y/n]")
+        else
+          true
+        end
       end
 
       def info(message)

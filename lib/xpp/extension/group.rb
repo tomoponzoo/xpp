@@ -17,9 +17,7 @@ module Xcodeproj
         end
 
         def xpp_new_group(name, is_confirm = false)
-          is_new_group = !is_confirm || Xpp::UI.confirm("[#{name}]グループが存在しません。グループを作成しますか？")
-          
-          unless is_new_group
+          unless Xpp::UI.confirm("'#{name}' group is not found. Would you like to create group?", is_confirm)
             return nil
           end
 
@@ -33,8 +31,7 @@ module Xcodeproj
             return name
           end
 
-          is_new_directory = !is_confirm || Xpp::UI.confirm("[#{name}]グループに対応するディレクトリを作成しますか？")
-          if is_new_directory
+          if Xpp::UI.confirm("Do you want to create a directory corresponding to the '#{name}' group?", is_confirm)
             FileUtils.mkdir_p(pathname)
             return name
           else

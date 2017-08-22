@@ -1,0 +1,21 @@
+//
+//  <%= @name %>Repository.swift
+//  <%= @project %>
+//
+//  Created by <%= @author %> on <%= @date %>.
+//  Copyright © 2017年 <%= @organization %>. All rights reserved.
+//
+
+import Foundation
+
+protocol <%= @name %>Repository {
+    
+}
+
+struct <%= @name %>RepositoryImpl: <%= @name %>Repository {
+    private let dataStore: <%= @name %>DataStore
+    
+    init(dataStore: <%= @name %>DataStore) {
+        self.dataStore = dataStore
+    }
+}

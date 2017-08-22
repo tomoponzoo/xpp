@@ -5,8 +5,8 @@ module Xpp
     require 'xpp/extension/project'
     require 'xpp/extension/group'
     require 'xpp/extension/file_reference'
+    require 'xpp/template/template_loader'
     require 'xpp/template/template_renderer'
-    require 'xpp/template/template_store'
 
     def self.load(path, options)
       new(options).tap do |dsl|
@@ -34,7 +34,7 @@ module Xpp
     end
 
     def templates(path)
-      @config.template_store = Xpp::TemplateStore.store(path)
+      @config.template_loader = Xpp::TemplateLoader.new(path)
     end
 
     def task(name, &block)
